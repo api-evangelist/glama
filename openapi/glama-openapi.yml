@@ -1,0 +1,197 @@
+openapi: 3.1.0
+info:
+  title: Glama Gateway API
+  version: "1.0.0"
+  description: |
+    Best-effort OpenAPI 3.1 description of the Glama Gateway API, an
+    OpenAI-compatible multi-provider AI gateway with completion-request
+    metadata and PKCE-based auth code exchange. Sourced from
+    https://gateway.glama.ai/openapi.json.
+  contact:
+    name: Glama Gateway
+    url: https://glama.ai/ai/gateway
+servers:
+  - url: https://gateway.glama.ai
+    description: Glama Gateway production
+security:
+  - bearerAuth: []
+paths:
+  /openai/v1/chat/completions:
+    post:
+      summary: Create a chat completion (OpenAI-compatible)
+      operationId: createChatCompletion
+      tags: [Chat Completions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [model, messages]
+              properties:
+                model: { type: string, description: "Format: provider/model-name (e.g. anthropic/claude-3-5-sonnet)" }
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      role: { type: string, enum: [system, user, assistant, tool] }
+                      content: { type: string }
+                temperature: { type: number, format: float, minimum: 0, maximum: 2 }
+                max_tokens: { type: integer }
+                stream: { type: boolean }
+                tools:
+                  type: array
+                  items: { type: object, additionalProperties: true }
+                response_format:
+                  type: object
+                  additionalProperties: true
+      responses:
+        "200":
+          description: Completion
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /openai/v1/responses:
+    post:
+      summary: Create a response (multimodal input)
+      operationId: createResponse
+      tags: [Responses]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [model, input]
+              properties:
+                model: { type: string }
+                input:
+                  oneOf:
+                    - type: string
+                    - type: array
+                      items: { type: object, additionalProperties: true }
+      responses:
+        "200":
+          description: Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /openai/v1/models:
+    get:
+      summary: List models (OpenAI-compatible)
+      operationId: listModelsOpenAi
+      tags: [Models]
+      responses:
+        "200":
+          description: Models
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        object: { type: string }
+                        owned_by: { type: string }
+  /v1/models:
+    get:
+      summary: List models with Glama metadata (pricing, capabilities)
+      operationId: listModels
+      tags: [Models]
+      responses:
+        "200":
+          description: Models with pricing/capabilities
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Model" }
+  /v1/auth/exchange-code:
+    post:
+      summary: Exchange a PKCE code for an API key
+      operationId: exchangeAuthCode
+      tags: [Auth]
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [code, code_verifier]
+              properties:
+                code: { type: string }
+                code_verifier: { type: string }
+      responses:
+        "200":
+          description: API key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  api_key: { type: string }
+                  expires_at: { type: string, format: date-time }
+  /v1/completion-requests/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    get:
+      summary: Retrieve completion-request metadata (tokens, cost)
+      operationId: getCompletionRequest
+      tags: [Observability]
+      responses:
+        "200":
+          description: Completion request metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: { type: string }
+                  model: { type: string }
+                  provider: { type: string }
+                  tokens:
+                    type: object
+                    properties:
+                      prompt: { type: integer }
+                      completion: { type: integer }
+                      total: { type: integer }
+                  cost_usd: { type: number, format: float }
+                  cached: { type: boolean }
+                  created_at: { type: string, format: date-time }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Glama API Key
+  schemas:
+    Model:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        provider: { type: string }
+        context_window: { type: integer }
+        capabilities:
+          type: array
+          items: { type: string }
+        pricing:
+          type: object
+          properties:
+            input_per_million: { type: number }
+            output_per_million: { type: number }
+            cache_read_per_million: { type: number }
+            cache_write_per_million: { type: number }
