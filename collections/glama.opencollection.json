@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Glama Gateway API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chat Completions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a chat completion (OpenAI-compatible)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://gateway.glama.ai/openai/v1/chat/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a chat completion (OpenAI-compatible)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Responses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a response (multimodal input)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://gateway.glama.ai/openai/v1/responses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a response (multimodal input)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List models (OpenAI-compatible)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gateway.glama.ai/openai/v1/models"
+          },
+          "docs": "List models (OpenAI-compatible)"
+        },
+        {
+          "info": {
+            "name": "List models with Glama metadata (pricing, capabilities)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gateway.glama.ai/v1/models"
+          },
+          "docs": "List models with Glama metadata (pricing, capabilities)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Exchange a PKCE code for an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://gateway.glama.ai/v1/auth/exchange-code",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchange a PKCE code for an API key"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Observability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve completion-request metadata (tokens, cost)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gateway.glama.ai/v1/completion-requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve completion-request metadata (tokens, cost)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
