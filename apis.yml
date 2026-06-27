@@ -68,7 +68,7 @@ apis:
         url: https://glama.ai/mcp/faq
       - type: Pricing
         url: https://glama.ai/pricing
-      - type: SignUp
+      - type: Signup
         url: https://glama.ai/signup
     features:
       - name: MCP Marketplace
@@ -129,7 +129,7 @@ common:
     url: https://glama.ai/pricing
   - type: Blog
     url: https://glama.ai/blog
-  - type: SignUp
+  - type: Signup
     url: https://glama.ai/signup
   - type: TermsOfService
     url: https://glama.ai/terms-of-service
