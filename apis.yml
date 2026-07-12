@@ -121,6 +121,10 @@ apis:
       - type: OAuth2
         description: Managed OAuth flows handle credentials for hosted MCP connectors on the user's behalf.
 common:
+  - type: DomainSecurity
+    url: security/glama-domain-security.yml
+  - type: Authentication
+    url: authentication/glama-authentication.yml
   - type: Website
     url: https://glama.ai
   - type: MCPHub
