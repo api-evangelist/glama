@@ -121,6 +121,8 @@ apis:
       - type: OAuth2
         description: Managed OAuth flows handle credentials for hosted MCP connectors on the user's behalf.
 common:
+  - type: AgenticAccess
+    url: agentic-access/glama-agentic-access.yml
   - type: DomainSecurity
     url: security/glama-domain-security.yml
   - type: Authentication
