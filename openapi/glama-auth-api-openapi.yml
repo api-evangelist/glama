@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Glama Gateway Auth API
+  version: 1.0.0
+  description: 'Best-effort OpenAPI 3.1 description of the Glama Gateway API, an
+
+    OpenAI-compatible multi-provider AI gateway with completion-request
+
+    metadata and PKCE-based auth code exchange. Sourced from
+
+    https://gateway.glama.ai/openapi.json.
+
+    '
+  contact:
+    name: Glama Gateway
+    url: https://glama.ai/ai/gateway
+servers:
+- url: https://gateway.glama.ai
+  description: Glama Gateway production
+security:
+- bearerAuth: []
+tags:
+- name: Auth
+paths:
+  /v1/auth/exchange-code:
+    post:
+      summary: Exchange a PKCE code for an API key
+      operationId: exchangeAuthCode
+      tags:
+      - Auth
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - code
+              - code_verifier
+              properties:
+                code:
+                  type: string
+                code_verifier:
+                  type: string
+      responses:
+        '200':
+          description: API key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  api_key:
+                    type: string
+                  expires_at:
+                    type: string
+                    format: date-time
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Glama API Key

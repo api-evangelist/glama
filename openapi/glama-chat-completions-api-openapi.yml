@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: Glama Gateway Auth Chat Completions API
+  version: 1.0.0
+  description: 'Best-effort OpenAPI 3.1 description of the Glama Gateway API, an
+
+    OpenAI-compatible multi-provider AI gateway with completion-request
+
+    metadata and PKCE-based auth code exchange. Sourced from
+
+    https://gateway.glama.ai/openapi.json.
+
+    '
+  contact:
+    name: Glama Gateway
+    url: https://glama.ai/ai/gateway
+servers:
+- url: https://gateway.glama.ai
+  description: Glama Gateway production
+security:
+- bearerAuth: []
+tags:
+- name: Chat Completions
+paths:
+  /openai/v1/chat/completions:
+    post:
+      summary: Create a chat completion (OpenAI-compatible)
+      operationId: createChatCompletion
+      tags:
+      - Chat Completions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - model
+              - messages
+              properties:
+                model:
+                  type: string
+                  description: 'Format: provider/model-name (e.g. anthropic/claude-3-5-sonnet)'
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        enum:
+                        - system
+                        - user
+                        - assistant
+                        - tool
+                      content:
+                        type: string
+                temperature:
+                  type: number
+                  format: float
+                  minimum: 0
+                  maximum: 2
+                max_tokens:
+                  type: integer
+                stream:
+                  type: boolean
+                tools:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                response_format:
+                  type: object
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Completion
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Glama API Key

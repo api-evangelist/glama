@@ -1,0 +1,73 @@
+openapi: 3.1.0
+info:
+  title: Glama Gateway Auth Observability API
+  version: 1.0.0
+  description: 'Best-effort OpenAPI 3.1 description of the Glama Gateway API, an
+
+    OpenAI-compatible multi-provider AI gateway with completion-request
+
+    metadata and PKCE-based auth code exchange. Sourced from
+
+    https://gateway.glama.ai/openapi.json.
+
+    '
+  contact:
+    name: Glama Gateway
+    url: https://glama.ai/ai/gateway
+servers:
+- url: https://gateway.glama.ai
+  description: Glama Gateway production
+security:
+- bearerAuth: []
+tags:
+- name: Observability
+paths:
+  /v1/completion-requests/{id}:
+    parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieve completion-request metadata (tokens, cost)
+      operationId: getCompletionRequest
+      tags:
+      - Observability
+      responses:
+        '200':
+          description: Completion request metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  model:
+                    type: string
+                  provider:
+                    type: string
+                  tokens:
+                    type: object
+                    properties:
+                      prompt:
+                        type: integer
+                      completion:
+                        type: integer
+                      total:
+                        type: integer
+                  cost_usd:
+                    type: number
+                    format: float
+                  cached:
+                    type: boolean
+                  created_at:
+                    type: string
+                    format: date-time
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Glama API Key
