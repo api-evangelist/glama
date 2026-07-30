@@ -13,9 +13,22 @@ description: >-
   tiers at $9, $26, and $80/month that bundle AI credits and hosted MCP server
   slots; open-source MCP maintainers can host for free.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/glama.png
 tags:
   - MCP
   - Model Context Protocol
@@ -34,92 +47,145 @@ created: '2026-05-23'
 modified: '2026-05-23'
 specificationVersion: '0.20'
 apis:
-  - aid: glama:mcp-platform
-    name: Glama MCP Marketplace & Gateway
+- aid: glama:mcp-platform
+  name: Glama MCP Marketplace & Gateway
+  description: >-
+    Glama's MCP platform indexes open-source MCP servers and hosted connectors, offers an ephemeral MCP
+    Inspector, hosts MCP servers on managed infrastructure, and proxies MCP traffic through the Glama
+    Gateway with logging, OAuth credential management, per-tool access control, and analytics. Works with
+    Claude Desktop, Claude Code, ChatGPT, Cursor, Windsurf, VS Code, Zed, and JetBrains IDEs.
+  humanURL: https://glama.ai/mcp
+  baseURL: https://glama.ai
+  tags:
+  - MCP Servers
+  - MCP Connectors
+  - Hosting
+  - Gateway
+  - Inspector
+  - OAuth
+  - Access Control
+  properties:
+  - type: Documentation
+    url: https://glama.ai/mcp
+  - type: MCPServers
+    url: https://glama.ai/mcp/servers
+  - type: MCPConnectors
+    url: https://glama.ai/mcp/connectors
+  - type: MCPInspector
+    url: https://glama.ai/mcp/inspector
+  - type: Methodology
+    url: https://glama.ai/mcp/methodology
+  - type: FAQ
+    url: https://glama.ai/mcp/faq
+  - type: Pricing
+    url: https://glama.ai/pricing
+  - type: Signup
+    url: https://glama.ai/signup
+  features:
+  - name: MCP Marketplace
     description: >-
-      Glama's MCP platform indexes open-source MCP servers and hosted
-      connectors, offers an ephemeral MCP Inspector, hosts MCP servers on
-      managed infrastructure, and proxies MCP traffic through the Glama
-      Gateway with logging, OAuth credential management, per-tool access
-      control, and analytics. Works with Claude Desktop, Claude Code, ChatGPT,
-      Cursor, Windsurf, VS Code, Zed, and JetBrains IDEs.
-    humanURL: https://glama.ai/mcp
-    baseURL: https://glama.ai
-    tags:
-      - MCP Servers
-      - MCP Connectors
-      - Hosting
-      - Gateway
-      - Inspector
-      - OAuth
-      - Access Control
-    properties:
-      - type: Documentation
-        url: https://glama.ai/mcp
-      - type: MCPServers
-        url: https://glama.ai/mcp/servers
-      - type: MCPConnectors
-        url: https://glama.ai/mcp/connectors
-      - type: MCPInspector
-        url: https://glama.ai/mcp/inspector
-      - type: Methodology
-        url: https://glama.ai/mcp/methodology
-      - type: FAQ
-        url: https://glama.ai/mcp/faq
-      - type: Pricing
-        url: https://glama.ai/pricing
-      - type: Signup
-        url: https://glama.ai/signup
-    features:
-      - name: MCP Marketplace
-        description: Searchable registry of 23,000+ MCP servers and 4,000+ connectors with quality and safety scoring.
-      - name: Tool-Level Search
-        description: Search across 167,000+ individual MCP tool capabilities, not just servers.
-      - name: MCP Inspector
-        description: Ephemeral sandbox to test any MCP server URL with raw JSON-RPC visibility and shareable debug sessions.
-      - name: One-Click MCP Hosting
-        description: Deploy MCP servers on managed infrastructure with Gateway integration and call analytics.
-      - name: Glama Gateway
-        description: Reverse proxy for MCP servers with JSON-RPC logging, per-tool ACLs, managed OAuth, and usage analytics.
-      - name: AI Gateway
-        description: Unified API across OpenAI, Anthropic, Google, DeepSeek, Mistral, and xAI models.
-      - name: MCP Client Compatibility
-        description: Works with Claude Desktop, Claude Code, ChatGPT, Cursor, Windsurf, VS Code, Zed, and JetBrains.
-      - name: OAuth Credential Management
-        description: Managed OAuth flows for connectors so users don't handle raw tokens.
-      - name: Quality & Safety Scoring
-        description: Continuous rebuilds and per-server scoring covering quality and safety dimensions.
-    useCases:
-      - name: Discover MCP Tools
-        description: Browse and search a curated catalog of MCP servers and connectors.
-      - name: Host MCP Servers
-        description: Deploy and operate MCP servers on managed infrastructure without running your own boxes.
-      - name: Govern MCP Traffic
-        description: Log JSON-RPC calls and enforce per-tool access control through the Gateway.
-      - name: Multi-Model LLM Access
-        description: Route prompts across providers through a single AI Gateway endpoint.
-      - name: Debug MCP Servers
-        description: Use the MCP Inspector to reproduce and share JSON-RPC traces.
-    integrations:
-      - name: Claude Desktop
-      - name: Claude Code
-      - name: ChatGPT
-      - name: Cursor
-      - name: Windsurf
-      - name: VS Code
-      - name: Zed
-      - name: JetBrains IDEs
-      - name: OpenAI
-      - name: Anthropic
-      - name: Google
-      - name: DeepSeek
-      - name: Mistral
-      - name: xAI
-    authentication:
-      - type: API Key
-        description: Account API keys authenticate AI Gateway and platform calls.
-      - type: OAuth2
-        description: Managed OAuth flows handle credentials for hosted MCP connectors on the user's behalf.
+      Searchable registry of 23,000+ MCP servers and 4,000+ connectors with quality and safety scoring.
+  - name: Tool-Level Search
+    description: Search across 167,000+ individual MCP tool capabilities, not just servers.
+  - name: MCP Inspector
+    description: >-
+      Ephemeral sandbox to test any MCP server URL with raw JSON-RPC visibility and shareable debug sessions.
+  - name: One-Click MCP Hosting
+    description: >-
+      Deploy MCP servers on managed infrastructure with Gateway integration and call analytics.
+  - name: Glama Gateway
+    description: >-
+      Reverse proxy for MCP servers with JSON-RPC logging, per-tool ACLs, managed OAuth, and usage analytics.
+  - name: AI Gateway
+    description: Unified API across OpenAI, Anthropic, Google, DeepSeek, Mistral, and xAI models.
+  - name: MCP Client Compatibility
+    description: >-
+      Works with Claude Desktop, Claude Code, ChatGPT, Cursor, Windsurf, VS Code, Zed, and JetBrains.
+  - name: OAuth Credential Management
+    description: Managed OAuth flows for connectors so users don't handle raw tokens.
+  - name: Quality & Safety Scoring
+    description: Continuous rebuilds and per-server scoring covering quality and safety dimensions.
+  useCases:
+  - name: Discover MCP Tools
+    description: Browse and search a curated catalog of MCP servers and connectors.
+  - name: Host MCP Servers
+    description: Deploy and operate MCP servers on managed infrastructure without running your own boxes.
+  - name: Govern MCP Traffic
+    description: Log JSON-RPC calls and enforce per-tool access control through the Gateway.
+  - name: Multi-Model LLM Access
+    description: Route prompts across providers through a single AI Gateway endpoint.
+  - name: Debug MCP Servers
+    description: Use the MCP Inspector to reproduce and share JSON-RPC traces.
+  integrations:
+  - name: Claude Desktop
+  - name: Claude Code
+  - name: ChatGPT
+  - name: Cursor
+  - name: Windsurf
+  - name: VS Code
+  - name: Zed
+  - name: JetBrains IDEs
+  - name: OpenAI
+  - name: Anthropic
+  - name: Google
+  - name: DeepSeek
+  - name: Mistral
+  - name: xAI
+  authentication:
+  - type: API Key
+    description: Account API keys authenticate AI Gateway and platform calls.
+  - type: OAuth2
+    description: Managed OAuth flows handle credentials for hosted MCP connectors on the user's behalf.
+- aid: glama:glama-auth-api
+  name: Glama AI Auth API
+  description: The Auth API from Glama AI — 1 operation(s) for auth.
+  humanURL: https://glama.ai/mcp
+  baseURL: https://glama.ai
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/glama-auth-api-openapi.yml
+- aid: glama:glama-chat-completions-api
+  name: Glama AI Chat Completions API
+  description: The Chat Completions API from Glama AI — 1 operation(s) for chat completions.
+  humanURL: https://glama.ai/mcp
+  baseURL: https://glama.ai
+  tags:
+  - Chat Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/glama-chat-completions-api-openapi.yml
+- aid: glama:glama-models-api
+  name: Glama AI Models API
+  description: The Models API from Glama AI — 2 operation(s) for models.
+  humanURL: https://glama.ai/mcp
+  baseURL: https://glama.ai
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/glama-models-api-openapi.yml
+- aid: glama:glama-observability-api
+  name: Glama AI Observability API
+  description: The Observability API from Glama AI — 1 operation(s) for observability.
+  humanURL: https://glama.ai/mcp
+  baseURL: https://glama.ai
+  tags:
+  - Observability
+  properties:
+  - type: OpenAPI
+    url: openapi/glama-observability-api-openapi.yml
+- aid: glama:glama-responses-api
+  name: Glama AI Responses API
+  description: The Responses API from Glama AI — 1 operation(s) for responses.
+  humanURL: https://glama.ai/mcp
+  baseURL: https://glama.ai
+  tags:
+  - Responses
+  properties:
+  - type: OpenAPI
+    url: openapi/glama-responses-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/glama-agentic-access.yml
