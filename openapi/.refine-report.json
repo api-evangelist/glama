@@ -1,0 +1,22 @@
+{
+  "provider": "glama",
+  "sources": [
+    "glama-auth-api-openapi.yml",
+    "glama-chat-completions-api-openapi.yml",
+    "glama-models-api-openapi.yml",
+    "glama-observability-api-openapi.yml",
+    "glama-responses-api-openapi.yml"
+  ],
+  "outputs": [
+    "glama-auth-api-openapi.yml",
+    "glama-chat-completions-api-openapi.yml",
+    "glama-models-api-openapi.yml",
+    "glama-observability-api-openapi.yml",
+    "glama-responses-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
