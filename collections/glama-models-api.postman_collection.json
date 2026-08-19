@@ -1,0 +1,197 @@
+{
+  "item": [
+    {
+      "id": "5762aabf-2a90-41df-ae77-af51bde51682",
+      "name": "Models",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ccec3c9e-ac20-48ac-b72e-c906254fa5a4",
+          "name": "List models (OpenAI-compatible)",
+          "request": {
+            "name": "List models (OpenAI-compatible)",
+            "description": {},
+            "url": {
+              "path": [
+                "openai",
+                "v1",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6727374-be49-46f2-8a6f-26d0eb21dddc",
+              "name": "Models",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "openai",
+                    "v1",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"object\": \"string\",\n      \"owned_by\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"object\": \"string\",\n      \"owned_by\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd211aa4-f0c5-4323-976c-4882f9ec50ca",
+          "name": "List models with Glama metadata (pricing, capabilities)",
+          "request": {
+            "name": "List models with Glama metadata (pricing, capabilities)",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19d5c15b-8e98-4977-b20e-0faf7ecf5a4e",
+              "name": "Models with pricing/capabilities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"provider\": \"string\",\n    \"context_window\": 4796,\n    \"capabilities\": [\n      \"string\",\n      \"string\"\n    ],\n    \"pricing\": {\n      \"input_per_million\": 6034.82268497667,\n      \"output_per_million\": 212.49902509672404,\n      \"cache_read_per_million\": 3112.5813415112293,\n      \"cache_write_per_million\": 3988.2988155236644\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"provider\": \"string\",\n    \"context_window\": 8479,\n    \"capabilities\": [\n      \"string\",\n      \"string\"\n    ],\n    \"pricing\": {\n      \"input_per_million\": 5312.7253282329175,\n      \"output_per_million\": 1669.2896827312154,\n      \"cache_read_per_million\": 4194.065780361894,\n      \"cache_write_per_million\": 19.815581527861113\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://gateway.glama.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dc2ac5c2-f949-4c96-b334-0e344f82936b",
+    "name": "Glama Gateway Auth Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of the Glama Gateway API, an\nOpenAI-compatible multi-provider AI gateway with completion-request\nmetadata and PKCE-based auth code exchange. Sourced from\nhttps://gateway.glama.ai/openapi.json.\n\n\nContact Support:\n Name: Glama Gateway",
+      "type": "text/plain"
+    }
+  }
+}

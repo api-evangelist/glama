@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Glama Gateway Auth Models API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List models (OpenAI-compatible)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gateway.glama.ai/openai/v1/models"
+          },
+          "docs": "List models (OpenAI-compatible)"
+        },
+        {
+          "info": {
+            "name": "List models with Glama metadata (pricing, capabilities)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gateway.glama.ai/v1/models"
+          },
+          "docs": "List models with Glama metadata (pricing, capabilities)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

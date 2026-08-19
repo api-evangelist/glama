@@ -1,0 +1,136 @@
+{
+  "item": [
+    {
+      "id": "edcff996-27b7-4889-8b8d-c5b08d8f6028",
+      "name": "Observability",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "15147d9b-d278-47bc-b915-49a544304986",
+          "name": "Retrieve completion-request metadata (tokens, cost)",
+          "request": {
+            "name": "Retrieve completion-request metadata (tokens, cost)",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "completion-requests",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43e4bec4-3732-440b-999f-16a14cb7a38b",
+              "name": "Completion request metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "completion-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model\": \"string\",\n  \"provider\": \"string\",\n  \"tokens\": {\n    \"prompt\": 5297,\n    \"completion\": 7906,\n    \"total\": 2629\n  },\n  \"cost_usd\": 4098.331856495732,\n  \"cached\": false,\n  \"created_at\": \"2004-02-07T20:03:36.093Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://gateway.glama.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "25bf0a2d-7121-45a8-8262-10d85ed8ca8e",
+    "name": "Glama Gateway Auth Observability API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of the Glama Gateway API, an\nOpenAI-compatible multi-provider AI gateway with completion-request\nmetadata and PKCE-based auth code exchange. Sourced from\nhttps://gateway.glama.ai/openapi.json.\n\n\nContact Support:\n Name: Glama Gateway",
+      "type": "text/plain"
+    }
+  }
+}

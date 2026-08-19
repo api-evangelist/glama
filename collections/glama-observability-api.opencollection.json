@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Glama Gateway Auth Observability API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Observability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve completion-request metadata (tokens, cost)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gateway.glama.ai/v1/completion-requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve completion-request metadata (tokens, cost)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
