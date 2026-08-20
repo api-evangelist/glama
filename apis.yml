@@ -31,6 +31,18 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/glama.png
 tags:
   - MCP
+  - MCP Marketplace
+  - MCP Gateway
+  - MCP Hosting
+  - MCP Inspector
+  - AI Gateway
+  - LLM Gateway
+  - Connectors
+  - Authentication
+  - Observability
+  - Multi-Provider
+tags_raw:
+  - MCP
   - Model Context Protocol
   - MCP Marketplace
   - MCP Gateway
@@ -57,6 +69,14 @@ apis:
   humanURL: https://glama.ai/mcp
   baseURL: https://glama.ai
   tags:
+  - MCP Servers
+  - MCP Connectors
+  - Hosting
+  - Gateway
+  - Inspector
+  - Authentication
+  - Access Control
+  tags_raw:
   - MCP Servers
   - MCP Connectors
   - Hosting
@@ -142,6 +162,8 @@ apis:
   humanURL: https://glama.ai/mcp
   baseURL: https://glama.ai
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
