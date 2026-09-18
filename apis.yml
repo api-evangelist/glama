@@ -82,10 +82,10 @@ apis:
   humanURL: https://glama.ai/mcp
   baseURL: https://glama.ai
   tags:
-  - MCP Servers
+  - MCP Server
   - MCP Connectors
   - Hosting
-  - Gateway
+  - Gateways
   - Inspector
   - Authentication
   - Access Control

@@ -1,11 +1,7 @@
 {
   "provider": "glama",
   "sources": [
-    "glama-auth-api-openapi.yml",
-    "glama-chat-completions-api-openapi.yml",
-    "glama-models-api-openapi.yml",
-    "glama-observability-api-openapi.yml",
-    "glama-responses-api-openapi.yml"
+    "_original/glama-openapi.yml"
   ],
   "outputs": [
     "glama-auth-api-openapi.yml",
@@ -17,6 +13,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "glama-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "glama-openapi.yml: declared missing tag: Auth",
+    "glama-openapi.yml: declared missing tag: Chat Completions",
+    "glama-openapi.yml: declared missing tag: Models",
+    "glama-openapi.yml: declared missing tag: Observability",
+    "glama-openapi.yml: declared missing tag: Responses",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "glama-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "glama-chat-completions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "glama-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "glama-observability-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "glama-responses-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

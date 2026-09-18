@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Glama Gateway Auth Observability API
+  title: Glama Gateway Observability API
   version: 1.0.0
   description: 'Best-effort OpenAPI 3.1 description of the Glama Gateway API, an
 
@@ -8,9 +8,7 @@ info:
 
     metadata and PKCE-based auth code exchange. Sourced from
 
-    https://gateway.glama.ai/openapi.json.
-
-    '
+    https://gateway.glama.ai/openapi.json.'
   contact:
     name: Glama Gateway
     url: https://glama.ai/ai/gateway
